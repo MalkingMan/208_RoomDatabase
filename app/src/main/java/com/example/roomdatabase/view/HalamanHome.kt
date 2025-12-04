@@ -1,5 +1,6 @@
 package com.example.roomdatabase.view
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -27,6 +28,7 @@ import com.example.roomdatabase.view.route.DestinasiHome
 @Composable
 fun HomeScreen(
     navigateToItemEntry: () -> Unit,
+    navigateToItemDetail: (Int) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
@@ -63,7 +65,8 @@ fun HomeScreen(
             itemSiswa = uiStateSiswa.listSiswa,
             modifier = Modifier
                 .padding(innerPadding)
-                .fillMaxSize()
+                .fillMaxSize(),
+            onSiswaClick = navigateToItemDetail
         )
     }
 }
@@ -71,7 +74,8 @@ fun HomeScreen(
 @Composable
 fun BodyHome(
     itemSiswa: List<Siswa>,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onSiswaClick: (Int) -> Unit = {}
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -87,7 +91,8 @@ fun BodyHome(
         } else {
             ListSiswa(
                 itemSiswa = itemSiswa,
-                modifier = Modifier.padding(horizontal = 8.dp)
+                modifier = Modifier.padding(horizontal = 8.dp),
+                onItemClick = { onSiswaClick(it.id) }
             )
         }
     }
@@ -96,7 +101,8 @@ fun BodyHome(
 @Composable
 fun ListSiswa(
     itemSiswa: List<Siswa>,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onItemClick: (Siswa) -> Unit
 ) {
     LazyColumn(
         modifier = modifier,
@@ -110,6 +116,8 @@ fun ListSiswa(
             DataSiswa(
                 siswa = person,
                 modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { onItemClick(person) }
             )
         }
     }
@@ -121,7 +129,7 @@ fun DataSiswa(
     modifier: Modifier = Modifier
 ) {
     Card(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier,
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color(0xFFF5F1E8)
