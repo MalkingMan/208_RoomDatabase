@@ -1,1 +1,1 @@
-<img width="211" height="447" alt="List Data SIswa" src="https://github.com/user-attachments/assets/f2735f99-ac80-4c50-80fd-847e07e2b653" />  <img width="195" height="436" alt="Hasil Data SIswa" src="https://github.com/user-attachments/assets/9ca3de93-8999-44c5-acd9-3c9f7427531c" />  <img width="202" height="434" alt="Tambah Siswa" src="https://github.com/user-attachments/assets/6d1e59dc-eb8e-48b0-baf2-dc1e77bb767e" />
+<img width="227" height="467" alt="image" src="https://github.com/user-attachments/assets/84439285-f4ce-4b3b-8c69-bcd3d0c5daf1" />
